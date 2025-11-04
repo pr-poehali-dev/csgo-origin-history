@@ -111,28 +111,25 @@ const Index = () => {
 
   return (
     <div className="min-h-screen">
-      <nav className="fixed top-0 w-full bg-background/95 backdrop-blur-sm border-b border-border z-50">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <Icon name="Crosshair" size={32} className="text-primary" />
-            <h1 className="text-2xl font-bold">CS:GO HISTORY</h1>
-          </div>
-          <div className="flex gap-6">
+      <nav className="fixed top-0 w-full bg-background border-b border-border z-50">
+        <div className="container mx-auto px-6 py-6 flex items-center justify-between">
+          <h1 className="text-xl font-normal tracking-tight">CS:GO</h1>
+          <div className="flex gap-8">
             <button 
               onClick={() => scrollToSection('history')}
-              className="text-foreground hover:text-primary transition-colors"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
             >
               История
             </button>
             <button 
               onClick={() => scrollToSection('esports')}
-              className="text-foreground hover:text-primary transition-colors"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
             >
               Киберспорт
             </button>
             <button 
               onClick={() => scrollToSection('teams')}
-              className="text-foreground hover:text-primary transition-colors"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
             >
               Команды
             </button>
@@ -140,87 +137,43 @@ const Index = () => {
         </div>
       </nav>
 
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        <div 
-          className="absolute inset-0 bg-cover bg-center opacity-40"
-          style={{ backgroundImage: 'url(https://cdn.poehali.dev/projects/fe175112-c1f1-4a74-9c09-d3d3d621be41/files/2161f2c1-f890-4ea4-877d-27ccff9bb9ea.jpg)' }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/80 to-background" />
-        
-        <div className="relative z-10 text-center px-4 animate-fade-in">
-          <Badge className="mb-4 text-lg px-6 py-2 bg-primary/20 text-primary border-primary">
-            Легенда киберспорта
-          </Badge>
-          <h1 className="text-6xl md:text-8xl font-bold mb-6 bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent">
-            COUNTER-STRIKE
-          </h1>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">GLOBAL OFFENSIVE</h2>
-          <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto mb-8">
-            От мода для Half-Life до крупнейшей киберспортивной дисциплины мира
-          </p>
-          <div className="flex gap-4 justify-center">
-            <Button 
-              size="lg" 
-              className="bg-primary hover:bg-primary/90 text-lg px-8"
-              onClick={() => scrollToSection('history')}
-            >
-              <Icon name="BookOpen" size={20} className="mr-2" />
-              История игры
-            </Button>
-            <Button 
-              size="lg" 
-              variant="outline" 
-              className="text-lg px-8 border-primary text-primary hover:bg-primary hover:text-primary-foreground"
-              onClick={() => scrollToSection('esports')}
-            >
-              <Icon name="Trophy" size={20} className="mr-2" />
-              Киберспорт
-            </Button>
+      <section className="relative h-screen flex items-center justify-center">
+        <div className="container mx-auto px-6 text-center">
+          <div className="max-w-4xl mx-auto space-y-8">
+            <h1 className="text-7xl md:text-9xl font-light tracking-tighter">
+              Counter-Strike
+            </h1>
+            <div className="h-px w-24 bg-foreground mx-auto" />
+            <p className="text-xl md:text-2xl font-light text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+              От мода для Half-Life до крупнейшей киберспортивной дисциплины мира
+            </p>
           </div>
-        </div>
-
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <Icon name="ChevronDown" size={32} className="text-primary" />
         </div>
       </section>
 
-      <section id="history" className="py-20 px-4">
-        <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-16 animate-fade-in">
-            <Badge className="mb-4 bg-secondary/20 text-secondary border-secondary">
-              <Icon name="Clock" size={16} className="mr-2" />
-              Временная линия
-            </Badge>
-            <h2 className="text-5xl font-bold mb-4">История CS:GO</h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+      <section id="history" className="py-32 px-6">
+        <div className="container mx-auto max-w-5xl">
+          <div className="mb-24">
+            <h2 className="text-5xl md:text-6xl font-light mb-6">История</h2>
+            <div className="h-px w-16 bg-foreground mb-8" />
+            <p className="text-lg text-muted-foreground max-w-2xl">
               От релиза до становления легендой киберспорта
             </p>
           </div>
 
-          <div className="relative">
-            <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-primary via-secondary to-primary" />
-            
+          <div className="space-y-16">
             {historyTimeline.map((event, index) => (
               <div 
                 key={event.year}
-                className={`relative mb-12 animate-fade-in ${
-                  index % 2 === 0 ? 'md:ml-auto md:pl-8' : 'md:mr-auto md:pr-8'
-                } md:w-1/2`}
-                style={{ animationDelay: `${index * 0.1}s` }}
+                className="border-l-2 border-border pl-8 hover:border-foreground transition-colors"
               >
-                <Card className="bg-card hover:bg-card/80 transition-all duration-300 hover:scale-105 border-border">
-                  <CardContent className="p-6">
-                    <div className="flex items-center gap-4 mb-4">
-                      <div className="w-16 h-16 rounded-full bg-primary flex items-center justify-center text-2xl font-bold">
-                        {event.year.slice(2)}
-                      </div>
-                      <h3 className="text-2xl font-bold">{event.title}</h3>
-                    </div>
-                    <p className="text-muted-foreground leading-relaxed">
-                      {event.description}
-                    </p>
-                  </CardContent>
-                </Card>
+                <div className="flex items-baseline gap-8 mb-3">
+                  <span className="text-sm text-muted-foreground font-light min-w-[60px]">{event.year}</span>
+                  <h3 className="text-2xl font-normal">{event.title}</h3>
+                </div>
+                <p className="text-muted-foreground leading-relaxed pl-[92px]">
+                  {event.description}
+                </p>
               </div>
             ))}
           </div>
@@ -229,156 +182,105 @@ const Index = () => {
 
       <section 
         id="esports" 
-        className="py-20 px-4 relative overflow-hidden"
+        className="py-32 px-6 bg-secondary"
       >
-        <div 
-          className="absolute inset-0 bg-cover bg-center opacity-20"
-          style={{ backgroundImage: 'url(https://cdn.poehali.dev/projects/fe175112-c1f1-4a74-9c09-d3d3d621be41/files/a39d6895-5283-4e95-9f2f-fc08a463c01f.jpg)' }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-background via-background/95 to-background" />
-        
-        <div className="container mx-auto max-w-6xl relative z-10">
-          <div className="text-center mb-16 animate-fade-in">
-            <Badge className="mb-4 bg-primary/20 text-primary border-primary">
-              <Icon name="Gamepad2" size={16} className="mr-2" />
-              Профессиональная сцена
-            </Badge>
-            <h2 className="text-5xl font-bold mb-4">Киберспорт</h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+        <div className="container mx-auto max-w-5xl">
+          <div className="mb-24">
+            <h2 className="text-5xl md:text-6xl font-light mb-6">Киберспорт</h2>
+            <div className="h-px w-16 bg-foreground mb-8" />
+            <p className="text-lg text-muted-foreground max-w-2xl">
               Крупнейшие турниры с многомиллионными призовыми фондами
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6 mb-12">
+          <div className="grid md:grid-cols-2 gap-px bg-border mb-16">
             {esportsTournaments.map((tournament, index) => (
-              <Card 
+              <div 
                 key={tournament.name}
-                className="bg-card/50 backdrop-blur-sm hover:bg-card/70 transition-all duration-300 hover:scale-105 border-primary/30 animate-scale-in"
-                style={{ animationDelay: `${index * 0.1}s` }}
+                className="bg-background p-8 hover:bg-muted transition-colors"
               >
-                <CardContent className="p-6">
-                  <div className="flex items-start justify-between mb-4">
-                    <div className="w-14 h-14 rounded-lg bg-primary/20 flex items-center justify-center">
-                      <Icon name={tournament.icon as any} size={28} className="text-primary" />
-                    </div>
-                    <Badge className="bg-secondary text-secondary-foreground">
-                      {tournament.prize}
-                    </Badge>
-                  </div>
-                  <h3 className="text-2xl font-bold mb-2">{tournament.name}</h3>
-                  <div className="flex items-center gap-2 text-muted-foreground">
-                    <Icon name="MapPin" size={16} />
-                    <span>{tournament.location}</span>
-                  </div>
-                </CardContent>
-              </Card>
+                <div className="flex items-start justify-between mb-6">
+                  <h3 className="text-xl font-normal">{tournament.name}</h3>
+                  <span className="text-sm text-muted-foreground">{tournament.prize}</span>
+                </div>
+                <p className="text-sm text-muted-foreground">{tournament.location}</p>
+              </div>
             ))}
           </div>
 
-          <Card className="bg-gradient-to-br from-primary/10 to-secondary/10 border-primary/50">
-            <CardContent className="p-8 text-center">
-              <Icon name="Users" size={48} className="mx-auto mb-4 text-primary" />
-              <h3 className="text-3xl font-bold mb-4">Миллионы зрителей по всему миру</h3>
-              <p className="text-lg text-muted-foreground mb-6 max-w-2xl mx-auto">
-                CS:GO входит в топ-3 самых популярных киберспортивных дисциплин. 
-                Мейджоры собирают аудиторию более 1 миллиона зрителей одновременно.
-              </p>
-              <div className="grid md:grid-cols-3 gap-6">
-                <div>
-                  <div className="text-4xl font-bold text-primary mb-2">1M+</div>
-                  <div className="text-muted-foreground">Онлайн зрителей</div>
-                </div>
-                <div>
-                  <div className="text-4xl font-bold text-secondary mb-2">$15M+</div>
-                  <div className="text-muted-foreground">Призовых в год</div>
-                </div>
-                <div>
-                  <div className="text-4xl font-bold text-primary mb-2">100+</div>
-                  <div className="text-muted-foreground">Турниров ежегодно</div>
-                </div>
+          <div className="border border-border p-12">
+            <p className="text-lg text-muted-foreground mb-12 max-w-2xl leading-relaxed">
+              CS:GO входит в топ-3 самых популярных киберспортивных дисциплин. 
+              Мейджоры собирают аудиторию более 1 миллиона зрителей одновременно.
+            </p>
+            <div className="grid md:grid-cols-3 gap-12">
+              <div>
+                <div className="text-4xl font-light mb-2">1M+</div>
+                <div className="text-sm text-muted-foreground">Онлайн зрителей</div>
               </div>
-            </CardContent>
-          </Card>
+              <div>
+                <div className="text-4xl font-light mb-2">$15M+</div>
+                <div className="text-sm text-muted-foreground">Призовых в год</div>
+              </div>
+              <div>
+                <div className="text-4xl font-light mb-2">100+</div>
+                <div className="text-sm text-muted-foreground">Турниров ежегодно</div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
       <section 
         id="teams" 
-        className="py-20 px-4 relative"
+        className="py-32 px-6"
       >
-        <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-16 animate-fade-in">
-            <Badge className="mb-4 bg-primary/20 text-primary border-primary">
-              <Icon name="Shield" size={16} className="mr-2" />
-              Легенды
-            </Badge>
-            <h2 className="text-5xl font-bold mb-4">Легендарные команды</h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+        <div className="container mx-auto max-w-5xl">
+          <div className="mb-24">
+            <h2 className="text-5xl md:text-6xl font-light mb-6">Легендарные команды</h2>
+            <div className="h-px w-16 bg-foreground mb-8" />
+            <p className="text-lg text-muted-foreground max-w-2xl">
               Составы, которые вошли в историю CS:GO
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="space-y-12">
             {legendaryTeams.map((team, index) => (
-              <Card 
+              <div 
                 key={team.name}
-                className="bg-card hover:bg-card/80 transition-all duration-300 hover:scale-105 border-primary/30 overflow-hidden animate-scale-in"
-                style={{ animationDelay: `${index * 0.1}s` }}
+                className="border-b border-border pb-12 last:border-0 hover:pb-16 transition-all"
               >
-                <div className={`h-2 bg-gradient-to-r ${team.color}`} />
-                <CardContent className="p-6">
-                  <div className="flex items-start justify-between mb-4">
-                    <div>
-                      <h3 className="text-2xl font-bold mb-1">{team.name}</h3>
-                      <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                        <Icon name="MapPin" size={14} />
-                        <span>{team.country}</span>
-                      </div>
-                    </div>
-                    <Icon name="Shield" size={32} className="text-primary/50" />
-                  </div>
-                  
-                  <div className="mb-4">
-                    <div className="flex items-center gap-2 mb-2">
-                      <Icon name="Trophy" size={16} className="text-primary" />
-                      <span className="text-sm font-semibold">Достижения</span>
-                    </div>
-                    <p className="text-sm text-muted-foreground">{team.achievements}</p>
-                  </div>
-
+                <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6 mb-6">
                   <div>
-                    <div className="flex items-center gap-2 mb-2">
-                      <Icon name="Users" size={16} className="text-secondary" />
-                      <span className="text-sm font-semibold">Состав</span>
-                    </div>
-                    <p className="text-sm text-muted-foreground">{team.players}</p>
+                    <h3 className="text-3xl font-normal mb-2">{team.name}</h3>
+                    <p className="text-sm text-muted-foreground">{team.country}</p>
                   </div>
-                </CardContent>
-              </Card>
+                  <div className="md:text-right">
+                    <p className="text-sm mb-2 text-muted-foreground">Достижения</p>
+                    <p className="text-sm">{team.achievements}</p>
+                  </div>
+                </div>
+                <p className="text-sm text-muted-foreground">{team.players}</p>
+              </div>
             ))}
           </div>
 
-          <Card className="mt-12 bg-gradient-to-r from-primary/10 to-secondary/10 border-primary/30">
-            <CardContent className="p-8 text-center">
-              <Icon name="Star" size={48} className="mx-auto mb-4 text-primary" />
-              <h3 className="text-2xl font-bold mb-3">Золотая эра Counter-Strike</h3>
-              <p className="text-muted-foreground max-w-3xl mx-auto">
-                CS:GO подарил миру незабываемые моменты и легендарные противостояния. 
-                От доминирования Astralis до невероятных выступлений s1mple, 
-                каждая команда внесла свой вклад в развитие киберспорта.
-              </p>
-            </CardContent>
-          </Card>
+          <div className="mt-24 border border-border p-12">
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              CS:GO подарил миру незабываемые моменты и легендарные противостояния. 
+              От доминирования Astralis до невероятных выступлений s1mple, 
+              каждая команда внесла свой вклад в развитие киберспорта.
+            </p>
+          </div>
         </div>
       </section>
 
-      <footer className="border-t border-border py-8 px-4">
-        <div className="container mx-auto text-center text-muted-foreground">
-          <div className="flex items-center justify-center gap-2 mb-4">
-            <Icon name="Crosshair" size={24} className="text-primary" />
-            <span className="font-bold">CS:GO HISTORY</span>
+      <footer className="border-t border-border py-12 px-6">
+        <div className="container mx-auto max-w-5xl">
+          <div className="flex items-center justify-between">
+            <p className="text-sm text-muted-foreground">CS:GO — Легенда продолжается</p>
+            <p className="text-sm text-muted-foreground">2024</p>
           </div>
-          <p>Легенда продолжается</p>
         </div>
       </footer>
     </div>
