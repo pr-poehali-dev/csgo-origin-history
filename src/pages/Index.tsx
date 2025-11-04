@@ -59,6 +59,51 @@ const Index = () => {
     }
   ];
 
+  const legendaryTeams = [
+    {
+      name: "Natus Vincere",
+      country: "Украина",
+      achievements: "Чемпионы PGL Major Stockholm 2021",
+      players: "s1mple, electronic, Perfecto, b1t, sdy",
+      color: "from-yellow-500 to-yellow-700"
+    },
+    {
+      name: "FaZe Clan",
+      country: "Международная",
+      achievements: "Чемпионы PGL Major Antwerp 2022",
+      players: "rain, karrigan, Twistzz, ropz, broky",
+      color: "from-red-500 to-red-700"
+    },
+    {
+      name: "Astralis",
+      country: "Дания",
+      achievements: "4x Major Champions, Era 2018-2019",
+      players: "device, dupreeh, Xyp9x, gla1ve, Magisk",
+      color: "from-purple-500 to-purple-700"
+    },
+    {
+      name: "Fnatic",
+      country: "Швеция",
+      achievements: "3x Major Champions, Легенды 2013-2015",
+      players: "JW, flusha, KRIMZ, olofmeister, dennis",
+      color: "from-orange-500 to-orange-700"
+    },
+    {
+      name: "Team Liquid",
+      country: "США",
+      achievements: "Intel Grand Slam Winners 2019",
+      players: "EliGE, NAF, Stewie2K, nitr0, Twistzz",
+      color: "from-blue-500 to-blue-700"
+    },
+    {
+      name: "Virtus.pro",
+      country: "Россия",
+      achievements: "Легенды CS:GO, множество побед",
+      players: "NEO, TaZ, pasha, Snax, byali",
+      color: "from-cyan-500 to-cyan-700"
+    }
+  ];
+
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     element?.scrollIntoView({ behavior: 'smooth' });
@@ -84,6 +129,12 @@ const Index = () => {
               className="text-foreground hover:text-primary transition-colors"
             >
               Киберспорт
+            </button>
+            <button 
+              onClick={() => scrollToSection('teams')}
+              className="text-foreground hover:text-primary transition-colors"
+            >
+              Команды
             </button>
           </div>
         </div>
@@ -246,6 +297,76 @@ const Index = () => {
                   <div className="text-muted-foreground">Турниров ежегодно</div>
                 </div>
               </div>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
+      <section 
+        id="teams" 
+        className="py-20 px-4 relative"
+      >
+        <div className="container mx-auto max-w-6xl">
+          <div className="text-center mb-16 animate-fade-in">
+            <Badge className="mb-4 bg-primary/20 text-primary border-primary">
+              <Icon name="Shield" size={16} className="mr-2" />
+              Легенды
+            </Badge>
+            <h2 className="text-5xl font-bold mb-4">Легендарные команды</h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              Составы, которые вошли в историю CS:GO
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {legendaryTeams.map((team, index) => (
+              <Card 
+                key={team.name}
+                className="bg-card hover:bg-card/80 transition-all duration-300 hover:scale-105 border-primary/30 overflow-hidden animate-scale-in"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <div className={`h-2 bg-gradient-to-r ${team.color}`} />
+                <CardContent className="p-6">
+                  <div className="flex items-start justify-between mb-4">
+                    <div>
+                      <h3 className="text-2xl font-bold mb-1">{team.name}</h3>
+                      <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                        <Icon name="MapPin" size={14} />
+                        <span>{team.country}</span>
+                      </div>
+                    </div>
+                    <Icon name="Shield" size={32} className="text-primary/50" />
+                  </div>
+                  
+                  <div className="mb-4">
+                    <div className="flex items-center gap-2 mb-2">
+                      <Icon name="Trophy" size={16} className="text-primary" />
+                      <span className="text-sm font-semibold">Достижения</span>
+                    </div>
+                    <p className="text-sm text-muted-foreground">{team.achievements}</p>
+                  </div>
+
+                  <div>
+                    <div className="flex items-center gap-2 mb-2">
+                      <Icon name="Users" size={16} className="text-secondary" />
+                      <span className="text-sm font-semibold">Состав</span>
+                    </div>
+                    <p className="text-sm text-muted-foreground">{team.players}</p>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
+          <Card className="mt-12 bg-gradient-to-r from-primary/10 to-secondary/10 border-primary/30">
+            <CardContent className="p-8 text-center">
+              <Icon name="Star" size={48} className="mx-auto mb-4 text-primary" />
+              <h3 className="text-2xl font-bold mb-3">Золотая эра Counter-Strike</h3>
+              <p className="text-muted-foreground max-w-3xl mx-auto">
+                CS:GO подарил миру незабываемые моменты и легендарные противостояния. 
+                От доминирования Astralis до невероятных выступлений s1mple, 
+                каждая команда внесла свой вклад в развитие киберспорта.
+              </p>
             </CardContent>
           </Card>
         </div>
